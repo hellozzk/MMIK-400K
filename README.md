@@ -44,7 +44,7 @@ The model's visual context is built from three aligned inputs: the inspection im
   </tr>
 </table>
 
-<p align="center"><sub>MMAD bottle / broken_large / 000 · I-RAG with GMM · ADAgent MVTECAD checkpoint · Images from <a href="https://www.mvtec.com/research-teaching/datasets/mvtec-ad">MVTec AD</a> (CC BY-NC-SA 4.0).</sub></p>
+<p align="center"><sub>MMAD bottle / broken_large / 000 · I-RAG with GMM · ADAgent MVTECAD checkpoint · Query and reference: <a href="https://www.mvtec.com/research-teaching/datasets/mvtec-ad">MVTec AD</a>, <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. The heatmap overlay was generated from the query image.</sub></p>
 
 ## At a glance
 
