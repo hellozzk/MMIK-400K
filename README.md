@@ -1,95 +1,111 @@
-<div align="center">
+<p align="center">
+  <img src="assets/hero.svg" alt="ADSeeker++: query image, normal reference and anomaly heatmap are combined by Qwen3-VL" width="100%">
+</p>
 
-# ADSeeker++
+<h1 align="center">ADSeeker++</h1>
+<p align="center"><strong>Towards Industrial Anomaly Cognition</strong><br>
+A knowledge-guided vision-language framework and the MMIK-400K benchmark.</p>
 
-### Towards Industrial Anomaly Cognition
+<p align="center">
+  <a href="Towards_Industrial_Anomaly_Cognition.pdf"><img alt="Paper PDF" src="https://img.shields.io/badge/Paper-PDF-C45156?style=flat-square"></a>
+  <a href="#mmik-400k-benchmark"><img alt="Benchmark MMIK-400K" src="https://img.shields.io/badge/Benchmark-MMIK--400K-238B9A?style=flat-square"></a>
+  <a href="#results"><img alt="MMAD and MMIK results" src="https://img.shields.io/badge/Tasks-MMAD%20%7C%20ClosedQA%20%7C%20OpenQA-345C86?style=flat-square"></a>
+</p>
 
-**A knowledge-guided vision-language framework and the MMIK-400K benchmark**
-
-[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?style=for-the-badge)](Towards_Industrial_Anomaly_Cognition.pdf)
-[![Benchmark](https://img.shields.io/badge/Benchmark-MMIK--400K-2563eb?style=for-the-badge)](#mmik-400k-benchmark)
-[![Tasks](https://img.shields.io/badge/Tasks-Detection%20%7C%20ClosedQA%20%7C%20OpenQA-0f766e?style=for-the-badge)](#mmik-400k-benchmark)
-
-[Overview](#overview) · [Benchmark](#mmik-400k-benchmark) · [Method](#adseeker-method) · [Results](#results) · [Usage](#usage-for-the-complete-project) · [Paper](#paper)
-
-</div>
+<p align="center">
+  <a href="#at-a-glance">Overview</a> &nbsp;·&nbsp;
+  <a href="#mmik-400k-benchmark">Benchmark</a> &nbsp;·&nbsp;
+  <a href="#adseeker-framework">Framework</a> &nbsp;·&nbsp;
+  <a href="#results">Results</a> &nbsp;·&nbsp;
+  <a href="#usage-for-the-complete-project">Usage</a>
+</p>
 
 ---
 
-## Overview
+## At a glance
 
-**ADSeeker++** brings two kinds of visual evidence into industrial question answering: an anomaly heatmap from **ADAgent** and a relevant normal image retrieved by **Image-RAG**. **Qwen3-VL** uses both alongside the query image to reason about defects. The accompanying **MMIK-400K** benchmark spans scene knowledge, closed-form inspection questions, and open-ended anomaly cognition.
+Industrial anomalies require more than identifying an unusual pixel region. **ADSeeker++** combines a normal reference retrieved by **Image-RAG** with anomaly evidence from **ADAgent**. **Qwen3-VL** reads those two visual cues together with the query image and question to produce a task-specific answer.
+
+| **MMIK-400K** | **Image-RAG** | **ADAgent + Qwen3-VL** |
+| :--- | :--- | :--- |
+| Industrial images, masks and knowledge-rich questions across three task paradigms. | Selects a relevant normal image from the query's official candidate pool. | Localizes suspicious regions and reasons over the query, reference and heatmap. |
 
 > [!NOTE]
-> **Release status.** This repository currently publishes the project homepage, paper, and figures. Source code, datasets, indexes, and checkpoints are being prepared for release. The usage commands below describe the complete project and require those files.
+> **Release status:** This repository currently contains the homepage, paper and figures. Source code, datasets, indexes and checkpoints have not yet been published here. The usage section documents the complete local project.
 
-<p align="center">
-  <img src="assets/figures/paper_fig7_adseeker_overview.png" alt="ADSeeker++ architecture with ADAgent, Image-RAG and vision-language reasoning" width="100%">
-</p>
-<p align="center"><sub>Figure 7 · ADAgent contributes anomaly evidence, while Image-RAG retrieves a normal reference for vision-language reasoning.</sub></p>
+## ADSeeker++ framework
 
-### At a glance
+<p align="center"><img src="assets/figures/paper_fig7_adseeker_overview.png" alt="ADSeeker++ paper architecture" width="100%"></p>
+<p align="center"><sub>Figure 7 from the paper · Image-RAG supplies an external normal reference; ADAgent supplies internal anomaly evidence.</sub></p>
 
-| 461,388 | 432 | 1,271,155 | 133,140 |
-| :---: | :---: | :---: | :---: |
-| Industrial images | Object categories | Closed QA pairs | Open QA pairs |
+| Input | Produced by | Role |
+| :--- | :--- | :--- |
+| **Query image** | Inspection sample | The object or scene to analyze. |
+| **Normal reference** | Image-RAG | A visual baseline selected from normal candidates. |
+| **Anomaly heatmap** | ADAgent | A spatial cue for suspicious regions. |
+| **Question** | MMAD / MMIK-400K | Defines the requested answer. |
 
-*Dataset statistics reported in the accompanying paper.*
+The four inputs are assembled for **Qwen3-VL + task LoRA**, which returns a ClosedQA choice or an OpenQA response.
 
 ## MMIK-400K benchmark
 
-MMIK-400K connects **scene knowledge pretraining**, **structured ClosedQA**, and **open-ended OpenQA**. Its images, masks, and questions are organized around industrial anomaly understanding.
+| **461,388** | **432** | **1,271,155** | **133,140** |
+| :---: | :---: | :---: | :---: |
+| Industrial images | Object categories | Closed QA pairs | Open QA pairs |
 
-<p align="center"><img src="assets/figures/paper_fig3_task_paradigms.png" alt="MMIK-400K task structure compared with earlier benchmarks" width="100%"></p>
-<p align="center"><sub>Figure 3 · Three complementary task paradigms in MMIK-400K.</sub></p>
+<sub>Statistics reported in the accompanying paper.</sub>
 
-<p align="center"><img src="assets/figures/paper_fig4_mmiK_samples.png" alt="Representative MMIK-400K categories and anomalies" width="75%"></p>
-<p align="center"><sub>Figure 4 · Representative categories and anomaly appearances.</sub></p>
+<p align="center"><img src="assets/figures/paper_fig3_task_paradigms.png" alt="MMIK-400K task paradigms" width="100%"></p>
+<p align="center"><sub>Figure 3 · Scene knowledge, structured ClosedQA and open-ended anomaly cognition.</sub></p>
 
-The paper describes multi-source collection, region-of-interest standardization, expert-reviewed masks, and associated knowledge annotations.
+<p align="center"><img src="assets/figures/paper_fig4_mmiK_samples.png" alt="Representative industrial categories and anomalies" width="86%"></p>
+<p align="center"><sub>Figure 4 · Representative category and anomaly variation.</sub></p>
 
-<p align="center"><img src="assets/figures/paper_fig2_data_pipeline.png" alt="MMIK-400K data collection and annotation pipeline" width="80%"></p>
-<p align="center"><sub>Figure 2 · From source images to masks and knowledge annotations.</sub></p>
+<details>
+<summary><strong>Explore more figures from the paper</strong></summary>
 
-## ADSeeker++ method
+### Data construction
 
-| Component | Evidence delivered to the VLM |
-| :--- | :--- |
-| **Image-RAG** | A top-1 normal reference selected from the query's eight candidates using ColQwen similarity, optionally with a KDE-GMM distribution term. |
-| **ADAgent** | An anomaly heatmap loaded from cache or generated from a detector checkpoint. |
-| **Qwen3-VL + task LoRA** | The answer conditioned on the query image, normal reference, heatmap, and question. |
+<p align="center"><img src="assets/figures/paper_fig2_data_pipeline.png" alt="MMIK-400K data and annotation pipeline" width="86%"></p>
+<p align="center"><sub>Figure 2 · Collection, standardization, mask annotation and knowledge generation.</sub></p>
 
-<p align="center"><img src="assets/figures/paper_fig13_irag_distribution.png" alt="Image-RAG normal-reference selection examples" width="70%"></p>
-<p align="center"><sub>Figure 13 · Similarity and candidate-density modeling guide reference selection.</sub></p>
+### Reference retrieval
 
-<p align="center"><img src="assets/figures/paper_fig11_knowledge_roles.png" alt="Qualitative comparison of internal and external knowledge" width="80%"></p>
-<p align="center"><sub>Figure 11 · Internal and external knowledge offer complementary evidence.</sub></p>
+<p align="center"><img src="assets/figures/paper_fig13_irag_distribution.png" alt="Image-RAG query similarity and candidate density" width="72%"></p>
+<p align="center"><sub>Figure 13 · Similarity and candidate density guide normal-reference selection.</sub></p>
+
+### Complementary knowledge
+
+<p align="center"><img src="assets/figures/paper_fig11_knowledge_roles.png" alt="Internal and external knowledge examples" width="86%"></p>
+<p align="center"><sub>Figure 11 · Internal and external knowledge provide complementary evidence.</sub></p>
+
+</details>
 
 ## Results
 
-The paper reports the following **ADSeeker++** results. ClosedQA is mean accuracy over seven tasks; OpenQA averages Normal Rule, Deviation, and Evidence Decision.
+**ADSeeker++ results reported in Table 8 of the paper.** ClosedQA is mean accuracy over seven tasks; OpenQA averages Normal Rule, Deviation and Evidence Decision.
 
-| Benchmark | Metric | Result |
+| Benchmark | Metric ↑ | Result |
 | :--- | :--- | ---: |
-| MMAD ClosedQA | Accuracy ↑ | **79.69%** |
-| MMIK-400K ClosedQA | Accuracy ↑ | **60.76%** |
-| MMIK-400K OpenQA | ROUGE-L ↑ | **26.71** |
-| MMIK-400K OpenQA | BERTScore ↑ | **89.19** |
-| MMIK-400K OpenQA | SBERT ↑ | **57.43** |
+| MMAD ClosedQA | Accuracy | **79.69%** |
+| MMIK-400K ClosedQA | Accuracy | **60.76%** |
+| MMIK-400K OpenQA | ROUGE-L | **26.71** |
+| MMIK-400K OpenQA | BERTScore | **89.19** |
+| MMIK-400K OpenQA | SBERT | **57.43** |
 
-See Table 8 in the [paper](Towards_Industrial_Anomaly_Cognition.pdf) for the complete evaluation context.
+See the [paper PDF](Towards_Industrial_Anomaly_Cognition.pdf) for the full evaluation protocol.
 
-## Repository map
+## Project layout
 
-| Component | Purpose |
-| --- | --- |
-| `ADAgent/` | Train and evaluate the detector, or generate a heatmap for one image. |
-| `Image-RAG/` | Retrieve one normal reference from eight candidates using ColQwen similarity and optional KDE-GMM. |
-| `VLM/` | Run MMAD, MMIK-400K ClosedQA, and MMIK-400K OpenQA with Qwen3-VL + task LoRA. |
-| `ADAgent_Heatmap/` | Cached heatmaps and query-to-heatmap manifests for the three VLM tasks. |
-| `Data/` | The `newnew/` image/annotation collection and `MMIK-400K-IAC/` images, masks, and QA splits. |
+The complete local project is organized as follows. These directories are **not included in this documentation-only GitHub release**.
 
-In the complete project, each folder above has its own task split and file layout.
+| Directory | Purpose |
+| :--- | :--- |
+| `Data/` | Images, masks, QA annotations and task splits. |
+| `ADAgent/` | Detector training, evaluation and heatmap generation. |
+| `Image-RAG/` | Candidate images, ColQwen indexes and reference retrieval. |
+| `ADAgent_Heatmap/` | Cached heatmaps and query-to-heatmap manifests. |
+| `VLM/` | Qwen3-VL inference for MMAD, MMIK-400K ClosedQA and OpenQA. |
 
 ## Usage for the complete project
 
@@ -222,4 +238,4 @@ The training configuration writes new checkpoints under `ADAgent/outputs/MMIK/tr
 
 ## Paper
 
-**Zekai Zhang et al.**, *Towards Industrial Anomaly Cognition: A Large-Scale Knowledge Benchmark, Challenges, and Baselines* (2026). Figures on this page are cropped from the [paper PDF](Towards_Industrial_Anomaly_Cognition.pdf): Figs. 2, 3, 4, 7, 11, and 13.
+**Zekai Zhang et al.**, *Towards Industrial Anomaly Cognition: A Large-Scale Knowledge Benchmark, Challenges, and Baselines* (2026). The visual examples above are cropped from the [paper PDF](Towards_Industrial_Anomaly_Cognition.pdf): Figures 2, 3, 4, 7, 11 and 13.
