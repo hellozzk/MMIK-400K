@@ -1,15 +1,83 @@
-# ADSeeker++: Towards Industrial Anomaly Cognition
+<div align="center">
 
-[Paper (PDF)](Towards_Industrial_Anomaly_Cognition.pdf) · [Dataset](#repository-map) · [Method](#how-inference-works) · [Usage](#usage-for-the-complete-project) · [Results](#results-reported-in-the-paper)
+# ADSeeker++
 
-**ADSeeker++** combines internal anomaly knowledge from **ADAgent** with a query-relevant normal image selected by **Image-RAG**. A task-specific Qwen3-VL model then uses the query image, retrieved reference, and anomaly heatmap to answer industrial inspection questions. The companion **MMIK-400K** benchmark connects scene knowledge pretraining, closed-form anomaly understanding, and open-ended anomaly cognition.
+### Towards Industrial Anomaly Cognition
 
-> **Release status:** This GitHub repository currently contains the project homepage, paper, and figures. The source code, datasets, indexes, and checkpoints are being prepared for release. The usage commands below describe the complete project layout and require those files.
+**A knowledge-guided vision-language framework and the MMIK-400K benchmark**
+
+[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?style=for-the-badge)](Towards_Industrial_Anomaly_Cognition.pdf)
+[![Benchmark](https://img.shields.io/badge/Benchmark-MMIK--400K-2563eb?style=for-the-badge)](#mmik-400k-benchmark)
+[![Tasks](https://img.shields.io/badge/Tasks-Detection%20%7C%20ClosedQA%20%7C%20OpenQA-0f766e?style=for-the-badge)](#mmik-400k-benchmark)
+
+[Overview](#overview) · [Benchmark](#mmik-400k-benchmark) · [Method](#adseeker-method) · [Results](#results) · [Usage](#usage-for-the-complete-project) · [Paper](#paper)
+
+</div>
+
+---
+
+## Overview
+
+**ADSeeker++** brings two kinds of visual evidence into industrial question answering: an anomaly heatmap from **ADAgent** and a relevant normal image retrieved by **Image-RAG**. **Qwen3-VL** uses both alongside the query image to reason about defects. The accompanying **MMIK-400K** benchmark spans scene knowledge, closed-form inspection questions, and open-ended anomaly cognition.
+
+> [!NOTE]
+> **Release status.** This repository currently publishes the project homepage, paper, and figures. Source code, datasets, indexes, and checkpoints are being prepared for release. The usage commands below describe the complete project and require those files.
 
 <p align="center">
   <img src="assets/figures/paper_fig7_adseeker_overview.png" alt="ADSeeker++ architecture with ADAgent, Image-RAG and vision-language reasoning" width="100%">
 </p>
-<p align="center"><em>Paper Fig. 7. ADAgent learns normal-to-anomaly relations; Image-RAG selects a relevant normal reference for the vision-language model.</em></p>
+<p align="center"><sub>Figure 7 · ADAgent contributes anomaly evidence, while Image-RAG retrieves a normal reference for vision-language reasoning.</sub></p>
+
+### At a glance
+
+| 461,388 | 432 | 1,271,155 | 133,140 |
+| :---: | :---: | :---: | :---: |
+| Industrial images | Object categories | Closed QA pairs | Open QA pairs |
+
+*Dataset statistics reported in the accompanying paper.*
+
+## MMIK-400K benchmark
+
+MMIK-400K connects **scene knowledge pretraining**, **structured ClosedQA**, and **open-ended OpenQA**. Its images, masks, and questions are organized around industrial anomaly understanding.
+
+<p align="center"><img src="assets/figures/paper_fig3_task_paradigms.png" alt="MMIK-400K task structure compared with earlier benchmarks" width="100%"></p>
+<p align="center"><sub>Figure 3 · Three complementary task paradigms in MMIK-400K.</sub></p>
+
+<p align="center"><img src="assets/figures/paper_fig4_mmiK_samples.png" alt="Representative MMIK-400K categories and anomalies" width="75%"></p>
+<p align="center"><sub>Figure 4 · Representative categories and anomaly appearances.</sub></p>
+
+The paper describes multi-source collection, region-of-interest standardization, expert-reviewed masks, and associated knowledge annotations.
+
+<p align="center"><img src="assets/figures/paper_fig2_data_pipeline.png" alt="MMIK-400K data collection and annotation pipeline" width="80%"></p>
+<p align="center"><sub>Figure 2 · From source images to masks and knowledge annotations.</sub></p>
+
+## ADSeeker++ method
+
+| Component | Evidence delivered to the VLM |
+| :--- | :--- |
+| **Image-RAG** | A top-1 normal reference selected from the query's eight candidates using ColQwen similarity, optionally with a KDE-GMM distribution term. |
+| **ADAgent** | An anomaly heatmap loaded from cache or generated from a detector checkpoint. |
+| **Qwen3-VL + task LoRA** | The answer conditioned on the query image, normal reference, heatmap, and question. |
+
+<p align="center"><img src="assets/figures/paper_fig13_irag_distribution.png" alt="Image-RAG normal-reference selection examples" width="70%"></p>
+<p align="center"><sub>Figure 13 · Similarity and candidate-density modeling guide reference selection.</sub></p>
+
+<p align="center"><img src="assets/figures/paper_fig11_knowledge_roles.png" alt="Qualitative comparison of internal and external knowledge" width="80%"></p>
+<p align="center"><sub>Figure 11 · Internal and external knowledge offer complementary evidence.</sub></p>
+
+## Results
+
+The paper reports the following **ADSeeker++** results. ClosedQA is mean accuracy over seven tasks; OpenQA averages Normal Rule, Deviation, and Evidence Decision.
+
+| Benchmark | Metric | Result |
+| :--- | :--- | ---: |
+| MMAD ClosedQA | Accuracy ↑ | **79.69%** |
+| MMIK-400K ClosedQA | Accuracy ↑ | **60.76%** |
+| MMIK-400K OpenQA | ROUGE-L ↑ | **26.71** |
+| MMIK-400K OpenQA | BERTScore ↑ | **89.19** |
+| MMIK-400K OpenQA | SBERT ↑ | **57.43** |
+
+See Table 8 in the [paper](Towards_Industrial_Anomaly_Cognition.pdf) for the complete evaluation context.
 
 ## Repository map
 
@@ -21,34 +89,16 @@
 | `ADAgent_Heatmap/` | Cached heatmaps and query-to-heatmap manifests for the three VLM tasks. |
 | `Data/` | The `newnew/` image/annotation collection and `MMIK-400K-IAC/` images, masks, and QA splits. |
 
-The paper reports **461,388 industrial images**, **432 object categories**, **1,271,155 closed QA pairs**, and **133,140 open QA pairs** across MMIK-400K. In the complete project, each folder above has its own task split and file layout.
-
-<p align="center"><img src="assets/figures/paper_fig3_task_paradigms.png" alt="MMIK-400K task structure compared with earlier benchmarks" width="100%"></p>
-<p align="center"><em>Paper Fig. 3. MMIK-400K connects scene knowledge pretraining, structured ClosedQA, and open-ended OpenQA.</em></p>
-
-<p align="center"><img src="assets/figures/paper_fig4_mmiK_samples.png" alt="Representative MMIK-400K categories and anomalies" width="75%"></p>
-<p align="center"><em>Paper Fig. 4. Samples illustrate variation in materials, appearance, and anomaly morphology.</em></p>
-
-The paper describes multi-source collection, region-of-interest standardization, expert-reviewed masks, and associated knowledge annotations. Local data paths and splits are documented in `Data/README.md`.
-
-<p align="center"><img src="assets/figures/paper_fig2_data_pipeline.png" alt="MMIK-400K data collection and annotation pipeline" width="80%"></p>
-<p align="center"><em>Paper Fig. 2. Source images are standardized before mask annotation and knowledge generation.</em></p>
-
-## How inference works
-
-1. **Image-RAG** reads the query's eight normal candidates and selects a top-1 reference. `--gmm` enables the KDE-GMM distribution term; `--no-gmm` uses similarity alone.
-2. **ADAgent** supplies an anomaly heatmap, either from `ADAgent_Heatmap/` or by running a specified checkpoint through `infer_joint.py`.
-3. **Qwen3-VL + task LoRA** receives the normal reference, heatmap, query image, and question. ClosedQA returns a choice; OpenQA returns free text.
-
-<p align="center"><img src="assets/figures/paper_fig13_irag_distribution.png" alt="Image-RAG normal-reference selection examples" width="70%"></p>
-<p align="center"><em>Paper Fig. 13. Query similarity and candidate-density modeling guide normal-reference selection.</em></p>
-
-<p align="center"><img src="assets/figures/paper_fig11_knowledge_roles.png" alt="Qualitative comparison of internal and external knowledge" width="80%"></p>
-<p align="center"><em>Paper Fig. 11. Internal and external knowledge provide complementary anomaly evidence.</em></p>
+In the complete project, each folder above has its own task split and file layout.
 
 ## Usage for the complete project
 
-Run the following commands from the repository root. The detector and VLM pin different PyTorch versions, so install them in separate environments. Python 3.10 and an NVIDIA GPU are recommended for the provided checkpoints.
+The following commands document the complete local project. They require the source code and model assets, which have not yet been published in this GitHub repository.
+
+<details>
+<summary><strong>Show environment setup, inference, and evaluation commands</strong></summary>
+
+Run the following commands from the complete project root. The detector and VLM pin different PyTorch versions, so install them in separate environments. Python 3.10 and an NVIDIA GPU are recommended for the provided checkpoints.
 
 ```bash
 cd /path/to/ADSeeker_code_reorg
@@ -168,15 +218,7 @@ Both modes retrieve a reference through Image-RAG. Commands for each task/mode a
 
 The training configuration writes new checkpoints under `ADAgent/outputs/MMIK/train/`. The VLM directory provides inference bundles; it does not contain a Qwen SFT training entry point.
 
-## Results reported in the paper
-
-**Table 8** of the accompanying paper reports the following ADSeeker++ results. ClosedQA is mean accuracy (%) over seven tasks; OpenQA averages Normal Rule, Deviation, and Evidence Decision.
-
-| MMAD ClosedQA ↑ | MMIK-400K ClosedQA ↑ | OpenQA ROUGE-L ↑ | OpenQA BERTScore ↑ | OpenQA SBERT ↑ |
-| ---: | ---: | ---: | ---: | ---: |
-| 79.69 | 60.76 | 26.71 | 89.19 | 57.43 |
-
-The quick-start commands run individual queries. See the [paper](Towards_Industrial_Anomaly_Cognition.pdf) for the full evaluation protocol.
+</details>
 
 ## Paper
 
