@@ -69,17 +69,3 @@ for (const tab of tabs) {
     selectCase(next, true);
   });
 }
-
-const menu = document.querySelector(".menu-toggle");
-const nav = document.getElementById("site-nav");
-menu.addEventListener("click", () => {
-  const open = menu.getAttribute("aria-expanded") !== "true";
-  menu.setAttribute("aria-expanded", String(open));
-  nav.classList.toggle("open", open);
-});
-for (const link of nav.querySelectorAll("a")) {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menu.setAttribute("aria-expanded", "false");
-  });
-}
