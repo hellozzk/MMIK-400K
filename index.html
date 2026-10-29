@@ -24,7 +24,7 @@
         <a href="#explore">Explore</a>
         <a href="#benchmark">Benchmark</a>
         <a href="#results">Results</a>
-        <a class="nav-paper" href="assets/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a>
+        <a class="nav-paper" href="assets/paper.pdf?v=20261029-hires6">Read the paper <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -39,7 +39,7 @@
           <p class="hero-lead">A normal reference. An anomaly heatmap. A vision-language model that brings both into industrial question answering.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#explore">Explore a real example <span aria-hidden="true">↘</span></a>
-            <a class="button button-ghost" href="assets/paper.pdf">Paper PDF <span aria-hidden="true">↗</span></a>
+            <a class="button button-ghost" href="assets/paper.pdf?v=20261029-hires6">Paper PDF <span aria-hidden="true">↗</span></a>
           </div>
           <div class="hero-status"><span class="status-dot" aria-hidden="true"></span> Research project preview · source and weights forthcoming</div>
         </div>
@@ -83,7 +83,7 @@
           <article class="flow-step"><div class="step-index">02 <span>↗</span></div><div class="step-icon heat-icon" aria-hidden="true"><span></span></div><h3>Localize deviation</h3><p>ADAgent creates a spatial anomaly heatmap that directs attention to suspicious regions of the query.</p><span class="step-label">INTERNAL EVIDENCE</span></article>
           <article class="flow-step flow-step-final"><div class="step-index">03 <span>↗</span></div><div class="step-icon vlm-icon" aria-hidden="true"><span></span></div><h3>Answer with context</h3><p>Qwen3-VL receives the query, reference, heatmap, and question to produce a ClosedQA choice or OpenQA response.</p><span class="step-label">VISION-LANGUAGE REASONING</span></article>
         </div>
-        <details class="paper-detail"><summary>View the complete architecture from the paper <span aria-hidden="true">↗</span></summary><figure><img src="assets/architecture.png" alt="Complete ADSeeker++ architecture from Figure 7 of the paper" loading="lazy"><figcaption>Figure 7 · ADAgent, Image-RAG, and downstream visual reasoning.</figcaption></figure></details>
+        <details class="paper-detail"><summary>View the complete architecture from the paper <span aria-hidden="true">↗</span></summary><figure><img src="assets/architecture.png?v=20261029-hires6" alt="Complete ADSeeker++ architecture from Figure 7 of the paper" loading="lazy"><figcaption>Figure 7 · ADAgent, Image-RAG, and downstream visual reasoning.</figcaption></figure></details>
       </div>
     </section>
 
@@ -113,19 +113,19 @@
     <section class="section benchmark-section" id="benchmark" aria-labelledby="benchmark-title">
       <div class="page-shell benchmark-grid">
         <div class="benchmark-copy"><div class="eyebrow"><span class="eyebrow-line"></span> 03 / THE BENCHMARK</div><h2 id="benchmark-title">From visual patterns<br>to <em>knowledge.</em></h2><p>MMIK-400K connects scene knowledge pretraining, structured inspection questions, and open-ended explanations. The benchmark asks models to understand what is normal, what changed, and why it matters.</p><div class="task-list"><div><span>01</span><strong>Scene knowledge</strong><small>objects, regions, and visual structure</small></div><div><span>02</span><strong>ClosedQA</strong><small>seven evaluation task types</small></div><div><span>03</span><strong>OpenQA</strong><small>normal rule, deviation, and evidence decision</small></div></div></div>
-        <div class="benchmark-visual"><div class="benchmark-image-frame"><img src="assets/categories.png" alt="Representative MMIK-400K industrial categories and anomaly types" loading="lazy"></div><span>FIGURE 4 · INDUSTRIAL CATEGORY VARIATION</span></div>
+        <div class="benchmark-visual"><div class="benchmark-image-frame"><img src="assets/categories.png?v=20261029-hires6" alt="Representative MMIK-400K industrial categories and anomaly types" loading="lazy"></div><span>FIGURE 4 · INDUSTRIAL CATEGORY VARIATION</span></div>
       </div>
-      <div class="page-shell"><details class="paper-detail benchmark-detail"><summary>Explore the full benchmark task structure <span aria-hidden="true">↗</span></summary><figure><img src="assets/benchmark.png" alt="MMIK-400K task structure from Figure 3 of the paper" loading="lazy"><figcaption>Figure 3 · MMIK-400K connects scene knowledge, ClosedQA, and OpenQA.</figcaption></figure></details></div>
+      <div class="page-shell"><details class="paper-detail benchmark-detail"><summary>Explore the full benchmark task structure <span aria-hidden="true">↗</span></summary><figure><img src="assets/benchmark.png?v=20261029-hires6" alt="MMIK-400K task structure from Figure 3 of the paper" loading="lazy"><figcaption>Figure 3 · MMIK-400K connects scene knowledge, ClosedQA, and OpenQA.</figcaption></figure></details></div>
     </section>
 
     <section class="section results-section" id="results" aria-labelledby="results-title">
       <div class="page-shell"><div class="section-head results-head"><div><div class="eyebrow light"><span class="eyebrow-line"></span> 04 / EVALUATION</div><h2 id="results-title">Measured across<br><em>three tasks.</em></h2></div><p>ADSeeker++ results reported in Table 8 of the paper. ClosedQA uses mean accuracy over seven tasks; OpenQA averages three question types.</p></div>
         <div class="result-grid"><div class="result-card result-card-large"><span>MMAD / CLOSEDQA</span><strong>79.69<small>%</small></strong><p>mean accuracy</p></div><div class="result-card result-card-large"><span>MMIK-400K / CLOSEDQA</span><strong>60.76<small>%</small></strong><p>mean accuracy</p></div><div class="result-card result-card-open"><span>MMIK-400K / OPENQA</span><div class="open-metrics"><div><strong>26.71</strong><small>ROUGE-L</small></div><div><strong>89.19</strong><small>BERTScore</small></div><div><strong>57.43</strong><small>SBERT</small></div></div></div></div>
-        <p class="results-source">Results and protocols: <a href="assets/paper.pdf">Towards Industrial Anomaly Cognition, Table 8 ↗</a></p>
+        <p class="results-source">Results and protocols: <a href="assets/paper.pdf?v=20261029-hires6">Towards Industrial Anomaly Cognition, Table 8 ↗</a></p>
       </div>
     </section>
 
-    <section class="section closing-section" id="paper"><div class="page-shell closing-grid"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE PAPER</div><h2>Explore the full<br><em>research story.</em></h2><p>From benchmark construction to knowledge-guided inference, the paper documents the method, dataset, and evaluation in detail.</p><div class="closing-actions"><a class="button button-dark" href="assets/paper.pdf">Download paper <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/hellozzk/MMIK-400K">GitHub repository <span aria-hidden="true">↗</span></a></div></div><div class="paper-cover" aria-label="Paper preview"><span class="cover-kicker">RESEARCH PAPER · 2026</span><div class="cover-rule"></div><strong>Towards<br>Industrial<br>Anomaly<br>Cognition</strong><span class="cover-subtitle">A Large-Scale Knowledge Benchmark,<br>Challenges, and Baselines</span><span class="cover-author">ZEKAI ZHANG ET AL.</span></div></div></section>
+    <section class="section closing-section" id="paper"><div class="page-shell closing-grid"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE PAPER</div><h2>Explore the full<br><em>research story.</em></h2><p>From benchmark construction to knowledge-guided inference, the paper documents the method, dataset, and evaluation in detail.</p><div class="closing-actions"><a class="button button-dark" href="assets/paper.pdf?v=20261029-hires6">Download paper <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/hellozzk/MMIK-400K">GitHub repository <span aria-hidden="true">↗</span></a></div></div><div class="paper-cover" aria-label="Paper preview"><span class="cover-kicker">RESEARCH PAPER · 2026</span><div class="cover-rule"></div><strong>Towards<br>Industrial<br>Anomaly<br>Cognition</strong><span class="cover-subtitle">A Large-Scale Knowledge Benchmark,<br>Challenges, and Baselines</span><span class="cover-author">ZEKAI ZHANG ET AL.</span></div></div></section>
   </main>
 
   <footer class="site-footer"><div class="page-shell footer-grid"><a class="brand" href="#top"><span class="brand-glyph" aria-hidden="true"><span></span><span></span><span></span></span><span>ADSeeker<span class="brand-plus">++</span></span></a><p>Research project documentation. Source code, data, and checkpoints are not yet published in the GitHub repository.</p><a href="#top">Back to top ↑</a></div></footer>
