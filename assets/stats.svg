@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="210" viewBox="0 0 1280 210" role="img" aria-labelledby="title">
+  <title id="title">MMIK-400K paper statistics: 461,388 images, 432 categories, 1,271,155 ClosedQA pairs and 133,140 OpenQA pairs</title>
+  <defs>
+    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0f2b48"/><stop offset="1" stop-color="#143a58"/></linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#12354e"/><stop offset="1" stop-color="#176171"/></linearGradient>
+    <linearGradient id="c" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17304c"/><stop offset="1" stop-color="#28476d"/></linearGradient>
+    <linearGradient id="d" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#333950"/><stop offset="1" stop-color="#52516f"/></linearGradient>
+  </defs>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <rect x="8" y="12" width="300" height="184" rx="20" fill="url(#a)"/>
+    <rect x="329" y="12" width="300" height="184" rx="20" fill="url(#b)"/>
+    <rect x="650" y="12" width="300" height="184" rx="20" fill="url(#c)"/>
+    <rect x="971" y="12" width="300" height="184" rx="20" fill="url(#d)"/>
+    <path d="M34 42h42" stroke="#63d8ea" stroke-width="4" stroke-linecap="round"/>
+    <path d="M355 42h42" stroke="#7fe0cb" stroke-width="4" stroke-linecap="round"/>
+    <path d="M676 42h42" stroke="#9ab7ff" stroke-width="4" stroke-linecap="round"/>
+    <path d="M997 42h42" stroke="#e6b4f2" stroke-width="4" stroke-linecap="round"/>
+    <text x="34" y="105" fill="#ffffff" font-size="39" font-weight="700" letter-spacing="-1">461,388</text>
+    <text x="355" y="105" fill="#ffffff" font-size="39" font-weight="700" letter-spacing="-1">432</text>
+    <text x="676" y="105" fill="#ffffff" font-size="39" font-weight="700" letter-spacing="-1">1,271,155</text>
+    <text x="997" y="105" fill="#ffffff" font-size="39" font-weight="700" letter-spacing="-1">133,140</text>
+    <text x="34" y="143" fill="#c7dceb" font-size="18">industrial images</text>
+    <text x="355" y="143" fill="#c9eee8" font-size="18">object categories</text>
+    <text x="676" y="143" fill="#d9e0ff" font-size="18">ClosedQA pairs</text>
+    <text x="997" y="143" fill="#ead9f5" font-size="18">OpenQA pairs</text>
+    <text x="34" y="174" fill="#7898af" font-size="12" letter-spacing="1.5">MMIK-400K</text>
+    <text x="355" y="174" fill="#7fb7b2" font-size="12" letter-spacing="1.5">COVERAGE</text>
+    <text x="676" y="174" fill="#98a9d1" font-size="12" letter-spacing="1.5">STRUCTURED QA</text>
+    <text x="997" y="174" fill="#c3a9ce" font-size="12" letter-spacing="1.5">OPEN-ENDED QA</text>
+  </g>
+</svg>
