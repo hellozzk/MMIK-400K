@@ -7,11 +7,11 @@
 
 Shandong University · University Paris Dauphine–PSL · Qilu University of Technology · NOVA IMS · Zhejiang University of Technology · Tianjin University of Technology
 
-[Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; [Paper (PDF)](Towards_Industrial_Anomaly_Cognition.pdf) &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
+[Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
 
 </div>
 
-> **Release status:** The paper, project page, and visual examples are available. Source code, datasets, indexes, and checkpoints are being prepared for release. The repository does not yet contain a runnable training or inference package.
+> **Release status:** The project page and visual examples are available. The full paper PDF is temporarily withheld. The 32-category MMIK-400K-IAC subset, full MMIK-400K collection, source code, indexes, and checkpoints are being prepared for public release. The repository does not yet contain a runnable training or inference package.
 
 ## Abstract
 
@@ -69,16 +69,17 @@ The paper reports the following **ADSeeker++-4B** results. ClosedQA values are m
 | Without Image-RAG | 71.34 | 55.68 | 22.38 | 86.84 | 50.65 |
 | **With Image-RAG** | **79.69** | **60.76** | **26.71** | **89.19** | **57.43** |
 
-*Source: Table 13 of the [paper](Towards_Industrial_Anomaly_Cognition.pdf). The two rows use the reported ADSeeker++-4B configurations; the paper describes the full evaluation protocol.*
+*Source: Table 13 of the manuscript. The two rows use the reported ADSeeker++-4B configurations; the complete evaluation protocol will be available with the paper.*
 
 ## Resources
 
 | Resource | Availability |
 | :--- | :--- |
-| [Extended paper PDF](Towards_Industrial_Anomaly_Cognition.pdf) | Available |
+| Extended paper PDF | Temporarily withheld |
 | [Project page](https://hellozzk.github.io/MMIK-400K/) | Available |
+| MMIK-400K-IAC subset | Release in progress; 32 categories and 59,740 images |
 | Training and inference code | In preparation |
-| MMIK-400K data and QA annotations | In preparation |
+| Full MMIK-400K data and QA annotations | In preparation |
 | ADAgent and Qwen checkpoints | In preparation |
 
 The manuscript extends an earlier version presented at CVPR 2026. This repository currently publishes research documentation and paper-derived figures; commands for training and evaluation will be added with the code release.
@@ -93,4 +94,4 @@ The manuscript extends an earlier version presented at CVPR 2026. This repositor
 }
 ```
 
-<sub>Figures 1, 3, 4, and 7 are cropped from the [paper PDF](Towards_Industrial_Anomaly_Cognition.pdf). For questions or corrections, open an [issue](https://github.com/hellozzk/MMIK-400K/issues).</sub>
+<sub>Figures 1, 3, 4, and 7 are cropped from the manuscript. For questions or corrections, open an [issue](https://github.com/hellozzk/MMIK-400K/issues).</sub>
