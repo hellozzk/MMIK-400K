@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d2c">
+  <meta name="description" content="ADSeeker++ and MMIK-400K: industrial anomaly cognition through normal-image retrieval, anomaly heatmaps, and visual reasoning.">
+  <title>ADSeeker++ · Towards Industrial Anomaly Cognition</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="ADSeeker++ homepage">
+        <span class="brand-glyph" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>ADSeeker<span class="brand-plus">++</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#method">Method</a>
+        <a href="#explore">Explore</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#results">Results</a>
+        <a class="nav-paper" href="assets/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-noise" aria-hidden="true"></div>
+      <div class="page-shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow light"><span class="eyebrow-line"></span> MMIK-400K × ADSEEKER++</div>
+          <h1 id="hero-title">Industrial anomalies,<br><em>understood in context.</em></h1>
+          <p class="hero-lead">A normal reference. An anomaly heatmap. A vision-language model that brings both into industrial question answering.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#explore">Explore a real example <span aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="assets/paper.pdf">Paper PDF <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-status"><span class="status-dot" aria-hidden="true"></span> Research project preview · source and weights forthcoming</div>
+        </div>
+        <div class="hero-visual" aria-label="Bottleneck defect, normal reference, and anomaly heatmap example">
+          <div class="visual-grid" aria-hidden="true"></div>
+          <div class="visual-card visual-query">
+            <div class="visual-tag"><span>01</span> Inspection image</div>
+            <img src="assets/bottle-query.png" alt="Anomalous bottle rim from the MMAD example">
+          </div>
+          <div class="visual-card visual-reference">
+            <div class="visual-tag"><span>02</span> Normal reference</div>
+            <img src="assets/bottle-reference.png" alt="Normal bottle retrieved by Image-RAG">
+          </div>
+          <div class="visual-card visual-heatmap">
+            <div class="visual-tag"><span>03</span> Anomaly evidence</div>
+            <img src="assets/bottle-heatmap.png" alt="ADAgent heatmap of the anomalous bottle">
+          </div>
+          <div class="visual-caption"><span class="caption-line"></span> MMAD / BOTTLE / BROKEN RIM</div>
+        </div>
+      </div>
+      <div class="hero-bottom" aria-hidden="true"><span>01 / 06</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </section>
+
+    <section class="stats-band" aria-label="MMIK-400K statistics reported in the paper">
+      <div class="page-shell stats-grid">
+        <div class="stat"><strong>461,388</strong><span>industrial images</span></div>
+        <div class="stat"><strong>432</strong><span>object categories</span></div>
+        <div class="stat"><strong>1.27M</strong><span>closed QA pairs</span></div>
+        <div class="stat"><strong>133K</strong><span>open QA pairs</span></div>
+      </div>
+    </section>
+
+    <section class="section method-section" id="method" aria-labelledby="method-title">
+      <div class="page-shell">
+        <div class="section-head method-head">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> 01 / THE METHOD</div><h2 id="method-title">Reasoning begins<br>with a <em>reference.</em></h2></div>
+          <p>ADSeeker++ pairs the inspection image with the closest normal evidence and a learned anomaly signal, then asks Qwen3-VL to reason over all three.</p>
+        </div>
+        <div class="method-flow" aria-label="ADSeeker++ visual reasoning pipeline">
+          <article class="flow-step"><div class="step-index">01 <span>↗</span></div><div class="step-icon ref-icon" aria-hidden="true"><span></span></div><h3>Retrieve normality</h3><p>Image-RAG selects one normal reference from the query's eight official candidates using ColQwen similarity and optional KDE-GMM.</p><span class="step-label">EXTERNAL EVIDENCE</span></article>
+          <article class="flow-step"><div class="step-index">02 <span>↗</span></div><div class="step-icon heat-icon" aria-hidden="true"><span></span></div><h3>Localize deviation</h3><p>ADAgent creates a spatial anomaly heatmap that directs attention to suspicious regions of the query.</p><span class="step-label">INTERNAL EVIDENCE</span></article>
+          <article class="flow-step flow-step-final"><div class="step-index">03 <span>↗</span></div><div class="step-icon vlm-icon" aria-hidden="true"><span></span></div><h3>Answer with context</h3><p>Qwen3-VL receives the query, reference, heatmap, and question to produce a ClosedQA choice or OpenQA response.</p><span class="step-label">VISION-LANGUAGE REASONING</span></article>
+        </div>
+        <details class="paper-detail"><summary>View the complete architecture from the paper <span aria-hidden="true">↗</span></summary><figure><img src="assets/architecture.png" alt="Complete ADSeeker++ architecture from Figure 7 of the paper" loading="lazy"><figcaption>Figure 7 · ADAgent, Image-RAG, and downstream visual reasoning.</figcaption></figure></details>
+      </div>
+    </section>
+
+    <section class="section explorer-section" id="explore" aria-labelledby="explore-title">
+      <div class="page-shell">
+        <div class="section-head">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> 02 / IN PRACTICE</div><h2 id="explore-title">See the evidence,<br><em>side by side.</em></h2></div>
+          <p>These are actual one-query retrieval and heatmap outputs. Switch between the MMAD bottle and MMIK road examples to see how the same pipeline handles different surfaces.</p>
+        </div>
+        <div class="case-switch" role="tablist" aria-label="Inspection example">
+          <button class="case-tab active" id="case-tab-bottle" role="tab" aria-selected="true" aria-controls="case-panel" data-case="bottle" type="button"><span class="case-tab-number">01</span> MMAD · Bottle</button>
+          <button class="case-tab" id="case-tab-road" role="tab" aria-selected="false" aria-controls="case-panel" data-case="road" type="button" tabindex="-1"><span class="case-tab-number">02</span> MMIK · Asphalt road</button>
+        </div>
+        <div class="case-panel" id="case-panel" role="tabpanel" aria-labelledby="case-tab-bottle">
+          <div class="case-panel-head"><div><span class="case-kicker" id="case-kicker">MMAD / MVTec AD / BOTTLE</span><h3 id="case-title">Broken rim, clear visual contrast.</h3></div><span class="case-id" id="case-id">broken_large / 000</span></div>
+          <div class="case-images">
+            <figure><div class="case-image-wrap"><span class="image-number">01</span><img id="case-query" src="assets/bottle-query.png" alt="Bottle with a broken rim"></div><figcaption><strong>Query image</strong><span>the inspection sample</span></figcaption></figure>
+            <figure><div class="case-image-wrap"><span class="image-number">02</span><img id="case-reference" src="assets/bottle-reference.png" alt="Normal bottle retrieved by Image-RAG"></div><figcaption><strong>I-RAG reference</strong><span>one normal candidate selected</span></figcaption></figure>
+            <figure><div class="case-image-wrap"><span class="image-number">03</span><img id="case-heatmap" src="assets/bottle-heatmap.png" alt="ADAgent heatmap over the bottle"></div><figcaption><strong>ADAgent heatmap</strong><span>spatial anomaly evidence</span></figcaption></figure>
+          </div>
+          <p class="case-note" id="case-note">I-RAG used the official eight-candidate set with GMM enabled; the heatmap was generated from the MVTECAD ADAgent checkpoint. This panel shows visual inputs, not a Qwen answer.</p>
+        </div>
+        <p class="source-note">Bottle query and normal image: <a href="https://www.mvtec.com/research-teaching/datasets/mvtec-ad">MVTec AD</a>, <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. Heatmap overlay generated from the query. The road example is from MMIK-400K.</p>
+      </div>
+    </section>
+
+    <section class="section benchmark-section" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="page-shell benchmark-grid">
+        <div class="benchmark-copy"><div class="eyebrow"><span class="eyebrow-line"></span> 03 / THE BENCHMARK</div><h2 id="benchmark-title">From visual patterns<br>to <em>knowledge.</em></h2><p>MMIK-400K connects scene knowledge pretraining, structured inspection questions, and open-ended explanations. The benchmark asks models to understand what is normal, what changed, and why it matters.</p><div class="task-list"><div><span>01</span><strong>Scene knowledge</strong><small>objects, regions, and visual structure</small></div><div><span>02</span><strong>ClosedQA</strong><small>seven evaluation task types</small></div><div><span>03</span><strong>OpenQA</strong><small>normal rule, deviation, and evidence decision</small></div></div></div>
+        <div class="benchmark-visual"><div class="benchmark-image-frame"><img src="assets/categories.png" alt="Representative MMIK-400K industrial categories and anomaly types" loading="lazy"></div><span>FIGURE 4 · INDUSTRIAL CATEGORY VARIATION</span></div>
+      </div>
+      <div class="page-shell"><details class="paper-detail benchmark-detail"><summary>Explore the full benchmark task structure <span aria-hidden="true">↗</span></summary><figure><img src="assets/benchmark.png" alt="MMIK-400K task structure from Figure 3 of the paper" loading="lazy"><figcaption>Figure 3 · MMIK-400K connects scene knowledge, ClosedQA, and OpenQA.</figcaption></figure></details></div>
+    </section>
+
+    <section class="section results-section" id="results" aria-labelledby="results-title">
+      <div class="page-shell"><div class="section-head results-head"><div><div class="eyebrow light"><span class="eyebrow-line"></span> 04 / EVALUATION</div><h2 id="results-title">Measured across<br><em>three tasks.</em></h2></div><p>ADSeeker++ results reported in Table 8 of the paper. ClosedQA uses mean accuracy over seven tasks; OpenQA averages three question types.</p></div>
+        <div class="result-grid"><div class="result-card result-card-large"><span>MMAD / CLOSEDQA</span><strong>79.69<small>%</small></strong><p>mean accuracy</p></div><div class="result-card result-card-large"><span>MMIK-400K / CLOSEDQA</span><strong>60.76<small>%</small></strong><p>mean accuracy</p></div><div class="result-card result-card-open"><span>MMIK-400K / OPENQA</span><div class="open-metrics"><div><strong>26.71</strong><small>ROUGE-L</small></div><div><strong>89.19</strong><small>BERTScore</small></div><div><strong>57.43</strong><small>SBERT</small></div></div></div></div>
+        <p class="results-source">Results and protocols: <a href="assets/paper.pdf">Towards Industrial Anomaly Cognition, Table 8 ↗</a></p>
+      </div>
+    </section>
+
+    <section class="section closing-section" id="paper"><div class="page-shell closing-grid"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE PAPER</div><h2>Explore the full<br><em>research story.</em></h2><p>From benchmark construction to knowledge-guided inference, the paper documents the method, dataset, and evaluation in detail.</p><div class="closing-actions"><a class="button button-dark" href="assets/paper.pdf">Download paper <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/hellozzk/MMIK-400K">GitHub repository <span aria-hidden="true">↗</span></a></div></div><div class="paper-cover" aria-label="Paper preview"><span class="cover-kicker">RESEARCH PAPER · 2026</span><div class="cover-rule"></div><strong>Towards<br>Industrial<br>Anomaly<br>Cognition</strong><span class="cover-subtitle">A Large-Scale Knowledge Benchmark,<br>Challenges, and Baselines</span><span class="cover-author">ZEKAI ZHANG ET AL.</span></div></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="page-shell footer-grid"><a class="brand" href="#top"><span class="brand-glyph" aria-hidden="true"><span></span><span></span><span></span></span><span>ADSeeker<span class="brand-plus">++</span></span></a><p>Research project documentation. Source code, data, and checkpoints are not yet published in the GitHub repository.</p><a href="#top">Back to top ↑</a></div></footer>
+  <script src="script.js" defer></script>
+</body>
+</html>
