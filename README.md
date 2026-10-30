@@ -7,11 +7,11 @@
 
 Shandong University · University Paris Dauphine–PSL · Qilu University of Technology · NOVA IMS · Zhejiang University of Technology · Tianjin University of Technology
 
-[Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
+[Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) &nbsp;|&nbsp; [Model weights](#model-weights) &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
 
 </div>
 
-> **Release status:** The project page and visual examples are available. The full paper PDF is temporarily withheld. The 32-category MMIK-400K-IAC subset, full MMIK-400K collection, source code, indexes, and checkpoints are being prepared for public release. The repository does not yet contain a runnable training or inference package.
+> **Release status:** The project page and visual examples are available. The full paper PDF is temporarily withheld. The MMIK-400K-IAC dataset and three model weight bundles are being uploaded to Hugging Face; their links become public after upload verification. The full MMIK-400K collection, source code, and indexes are in preparation. This repository does not yet contain a runnable training or inference package.
 
 ## Abstract
 
@@ -77,10 +77,20 @@ The paper reports the following **ADSeeker++-4B** results. ClosedQA values are m
 | :--- | :--- |
 | Extended paper PDF | Temporarily withheld |
 | [Project page](https://hellozzk.github.io/MMIK-400K/) | Available |
-| MMIK-400K-IAC subset | Release in progress; 32 categories and 59,740 images |
+| [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) | 32 categories and 59,740 images; upload in progress |
 | Training and inference code | In preparation |
 | Full MMIK-400K data and QA annotations | In preparation |
-| ADAgent and Qwen checkpoints | In preparation |
+| ADAgent checkpoints | In preparation |
+
+### Model weights
+
+Each model bundle contains the Qwen3-VL-4B-Instruct base, processor files, and its task-specific LoRA adapter. Only model files and loading configuration are uploaded; training and inference code are not included. The Hugging Face repositories remain private until their files pass verification.
+
+| Task | Hugging Face weights |
+| :--- | :--- |
+| MMAD ClosedQA | [ADSeeker-MMAD-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMAD-Qwen3-VL-4B-LoRA) |
+| MMIK-400K ClosedQA | [ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA) |
+| MMIK-400K OpenQA | [ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA) |
 
 The manuscript extends an earlier version presented at CVPR 2026. This repository currently publishes research documentation and paper-derived figures; commands for training and evaluation will be added with the code release.
 
