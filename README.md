@@ -92,15 +92,18 @@ Each model bundle contains the Qwen3-VL-4B-Instruct base, processor files, and i
 | MMIK-400K ClosedQA | <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA) |
 | MMIK-400K OpenQA | <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA) |
 
-The manuscript extends an earlier version presented at CVPR 2026. This repository currently publishes research documentation and paper-derived figures; commands for training and evaluation will be added with the code release.
+Related prior work: [ADSeeker (CVPR 2026)](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_ADSeeker_A_Knowledge-Grounded_Reasoning_Framework_for_Industry_Anomaly_Detection_and_CVPR_2026_paper.html). This repository currently publishes research documentation and paper-derived figures; commands for training and evaluation will be added with the code release.
 
-## Citation
+## Prior work citation (CVPR 2026)
 
 ```bibtex
-@misc{zhang2026towards,
-  title={Towards Industrial Anomaly Cognition: A Large-Scale Knowledge Benchmark, Challenges, and Baselines},
-  author={Zhang, Zekai and Chen, Qinghui and Chen, Da and Li, Gang and Bian, Changlin and Liu, Yunlong and Zhou, Tao and Liu, Cong and Zhang, Jinglin and Bai, Cong and Chen, Shengyong and Cohen, Laurent D.},
-  year={2026}
+@InProceedings{Zhang_2026_CVPR,
+  author={Zhang, Kai and Zhang, Zekai and Sun, Xihe and Wang, Anpeng and Nie, Jingmeng and Chen, Qinghui and Hao, Han and Guo, Jianyuan and Zhang, Jinglin},
+  title={ADSeeker: A Knowledge-Grounded Reasoning Framework for Industry Anomaly Detection and Reasoning},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month={June},
+  year={2026},
+  pages={21379--21388}
 }
 ```
 
