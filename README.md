@@ -9,11 +9,38 @@
 
 Shandong University · University Paris Dauphine–PSL · Qilu University of Technology · NOVA IMS · Zhejiang University of Technology · Tianjin University of Technology
 
-[Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; <a href="https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC"><img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> MMIK-400K-IAC dataset</a> &nbsp;|&nbsp; <a href="#model-weights"><img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> Model weights</a> &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
+[**Live demo ↗**](https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA) &nbsp;|&nbsp; [Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; <a href="https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC"><img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> MMIK-400K-IAC dataset</a> &nbsp;|&nbsp; <a href="#model-weights"><img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> Model weights</a> &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
+
+<p>
+  <a href="https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Try%20ADSeeker-Live%20Demo-5262d8?style=for-the-badge" alt="Try ADSeeker live on Hugging Face"></a>
+</p>
+
+**Upload an image. Retrieve a normal reference. Explore the anomaly.**<br>
+[**Launch the interactive demo →**](https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA) · [How to use](#online-demo)
 
 </div>
 
-> **Release status:** The project page and visual examples are available. The full paper PDF is temporarily withheld. The MMIK-400K-IAC dataset and three model weight bundles are being uploaded to Hugging Face; their links become public after upload verification. The full MMIK-400K collection, source code, and indexes are in preparation. This repository does not yet contain a runnable training or inference package.
+> **Release status:** The interactive demo, project page, MMIK-400K-IAC dataset, and three model weight bundles are available. The full paper PDF is temporarily withheld. The full MMIK-400K collection and source-code release are in preparation. The online demo loads its inference engine and supporting resources privately.
+
+## Online demo
+
+### Try ADSeeker in your browser
+
+**[Open the live demo on Hugging Face →](https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA)** — no installation or local GPU required.
+
+<p align="center"><a href="https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA"><img src="assets/showcase/adseeker_live_demo.png" alt="English ADSeeker interface with image upload, normal reference, anomaly heatmap, and question answering" width="90%"></a></p>
+
+1. **Choose an image.** Upload a PNG/JPG image (up to 20 MB), or click one of the four examples.
+2. **Select the object category.** Choose the category matching your image so Image-RAG can search its normal reference candidates. Selecting an example sets its category automatically.
+3. **Ask a question.** Enter your question, or use **Normal appearance**, **Describe anomaly**, or **Impact & advice**.
+4. **Click Analyze image.** The app retrieves a normal reference with **ColQwen + GMM**, generates an **ADAgent anomaly heatmap**, and supplies the reference, heatmap, and query image to the **OpenQA Qwen3-VL-4B model**.
+5. **Explore the answer.** View the retrieved reference, heatmap overlay, and generated explanation. Change the question to inspect another aspect, or select **Clear** to start again.
+
+**Example question:** “Describe the visible anomaly and how it differs from a normal appearance.”
+
+The English interface currently supports **32 categories**, with **8 original normal candidates per category**. This lightweight demo uses the MMIK-400K OpenQA model; it is separate from the complete benchmark evaluation. The full 19,200-image normal reference bank has been prepared privately and is not enabled in the live demo.
+
+**Availability:** The app runs on free Hugging Face ZeroGPU. Cold starts, the first request for a category, GPU queues, and platform usage quotas can add waiting time. If the app is sleeping, allow it to start before analyzing an image. The public Space contains only a minimal launcher; the inference engine and supporting resources remain private.
 
 ## Abstract
 
@@ -78,15 +105,16 @@ The paper reports the following **ADSeeker++-4B** results. ClosedQA values are m
 | Resource | Availability |
 | :--- | :--- |
 | Extended paper PDF | Temporarily withheld |
+| [Live demo](https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA) | Available · OpenQA · free ZeroGPU |
 | [Project page](https://hellozzk.github.io/MMIK-400K/) | Available |
-| <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) | 32 categories and 59,740 images; upload in progress |
+| <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) | 32 categories and 59,740 images; available |
 | Training and inference code | In preparation |
 | Full MMIK-400K data and QA annotations | In preparation |
 | ADAgent checkpoints | In preparation |
 
 ### Model weights
 
-Each model bundle contains the Qwen3-VL-4B-Instruct base, processor files, and its task-specific LoRA adapter. Only model files and loading configuration are uploaded; training and inference code are not included. The Hugging Face repositories remain private until their files pass verification.
+Each model bundle contains the Qwen3-VL-4B-Instruct base, processor files, and its task-specific LoRA adapter. Only model files and loading configuration are uploaded; training and inference code are not included. All three model bundles have completed upload verification and are publicly available.
 
 | Task | Hugging Face weights |
 | :--- | :--- |
