@@ -7,7 +7,7 @@
 
 Shandong University · University Paris Dauphine–PSL · Qilu University of Technology · NOVA IMS · Zhejiang University of Technology · Tianjin University of Technology
 
-[Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) &nbsp;|&nbsp; [Model weights](#model-weights) &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
+[Project page](https://hellozzk.github.io/MMIK-400K/) &nbsp;|&nbsp; <a href="https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC"><img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> MMIK-400K-IAC dataset</a> &nbsp;|&nbsp; <a href="#model-weights"><img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> Model weights</a> &nbsp;|&nbsp; [Visual examples](#visual-examples) &nbsp;|&nbsp; [Results](#results)
 
 </div>
 
@@ -77,7 +77,7 @@ The paper reports the following **ADSeeker++-4B** results. ClosedQA values are m
 | :--- | :--- |
 | Extended paper PDF | Temporarily withheld |
 | [Project page](https://hellozzk.github.io/MMIK-400K/) | Available |
-| [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) | 32 categories and 59,740 images; upload in progress |
+| <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) | 32 categories and 59,740 images; upload in progress |
 | Training and inference code | In preparation |
 | Full MMIK-400K data and QA annotations | In preparation |
 | ADAgent checkpoints | In preparation |
@@ -88,9 +88,9 @@ Each model bundle contains the Qwen3-VL-4B-Instruct base, processor files, and i
 
 | Task | Hugging Face weights |
 | :--- | :--- |
-| MMAD ClosedQA | [ADSeeker-MMAD-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMAD-Qwen3-VL-4B-LoRA) |
-| MMIK-400K ClosedQA | [ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA) |
-| MMIK-400K OpenQA | [ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA) |
+| MMAD ClosedQA | <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [ADSeeker-MMAD-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMAD-Qwen3-VL-4B-LoRA) |
+| MMIK-400K ClosedQA | <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA) |
+| MMIK-400K OpenQA | <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA) |
 
 The manuscript extends an earlier version presented at CVPR 2026. This repository currently publishes research documentation and paper-derived figures; commands for training and evaluation will be added with the code release.
 
