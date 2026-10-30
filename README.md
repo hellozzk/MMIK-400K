@@ -20,7 +20,7 @@ Shandong University · University Paris Dauphine–PSL · Qilu University of Tec
 
 </div>
 
-> **Release status:** The interactive demo, project page, MMIK-400K-IAC dataset, and three model weight bundles are available. The full paper PDF is temporarily withheld. The full MMIK-400K collection and source-code release are in preparation. The online demo loads its inference engine and supporting resources privately.
+> **Release status: Available.** Explore the live demo, download the MMIK-400K-IAC dataset, and access the MMAD, MMIK-400K ClosedQA, and MMIK-400K OpenQA model weights on Hugging Face.
 
 ## Online demo
 
@@ -104,13 +104,12 @@ The paper reports the following **ADSeeker++-4B** results. ClosedQA values are m
 
 | Resource | Availability |
 | :--- | :--- |
-| Extended paper PDF | Temporarily withheld |
-| [Live demo](https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA) | Available · OpenQA · free ZeroGPU |
+| [Live demo](https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA) | Available |
 | [Project page](https://hellozzk.github.io/MMIK-400K/) | Available |
-| <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) | 32 categories and 59,740 images; available |
-| Training and inference code | In preparation |
-| Full MMIK-400K data and QA annotations | In preparation |
-| ADAgent checkpoints | In preparation |
+| <img src="assets/brand/huggingface.svg" width="18" height="17" alt="Hugging Face"> [MMIK-400K-IAC dataset](https://huggingface.co/datasets/ZZk12138/MMIK-400K-IAC) | Available |
+| [MMAD ClosedQA model weights](https://huggingface.co/ZZk12138/ADSeeker-MMAD-Qwen3-VL-4B-LoRA) | Available |
+| [MMIK-400K ClosedQA model weights](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-ClosedQA-Qwen3-VL-4B-LoRA) | Available |
+| [MMIK-400K OpenQA model weights](https://huggingface.co/ZZk12138/ADSeeker-MMIK-400K-OpenQA-Qwen3-VL-4B-LoRA) | Available |
 
 ### Model weights
 
