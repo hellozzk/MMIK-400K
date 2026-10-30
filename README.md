@@ -3,6 +3,8 @@
 # Towards Industrial Anomaly Cognition
 ### A Large-Scale Knowledge Benchmark, Challenges, and Baselines
 
+**Submitted to IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)**
+
 **Zekai Zhang · Qinghui Chen · Da Chen · Gang Li · Changlin Bian · Yunlong Liu · Tao Zhou · Cong Liu · Jinglin Zhang* · Cong Bai · Shengyong Chen · Laurent D. Cohen**
 
 Shandong University · University Paris Dauphine–PSL · Qilu University of Technology · NOVA IMS · Zhejiang University of Technology · Tianjin University of Technology
