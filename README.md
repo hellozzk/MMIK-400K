@@ -30,7 +30,7 @@ Shandong University · University Paris Dauphine–PSL · Qilu University of Tec
 
 <p align="center"><a href="https://huggingface.co/spaces/ZZk12138/ADSeeker-OpenQA"><img src="assets/showcase/adseeker_live_demo.png" alt="English ADSeeker interface with image upload, normal reference, anomaly heatmap, and question answering" width="90%"></a></p>
 
-1. **Choose an image.** Upload a PNG/JPG image (up to 20 MB), or click one of the four examples.
+1. **Choose an image.** Upload a PNG/JPG image (up to 20 MB), or click one of the 20 inspection examples.
 2. **Select the object category.** Choose the category matching your image so Image-RAG can search its normal reference candidates. Selecting an example sets its category automatically.
 3. **Ask a question.** Enter your question, or use **Normal appearance**, **Describe anomaly**, or **Impact & advice**.
 4. **Click Analyze image.** The app retrieves a normal reference with **ColQwen + GMM**, generates an **ADAgent anomaly heatmap**, and supplies the reference, heatmap, and query image to the **OpenQA Qwen3-VL-4B model**.
