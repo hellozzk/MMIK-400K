@@ -20,6 +20,11 @@ Shandong University · University Paris Dauphine–PSL · Qilu University of Tec
 
 </div>
 
+> **重要使用声明：使用本数据集发表论文或用于商业用途前，须联系 [2673679261@qq.com](mailto:2673679261@qq.com) 并签署相关开源声明。**
+>
+> **IMPORTANT USAGE NOTICE: Before using this dataset in a research publication or for commercial purposes, you must contact [2673679261@qq.com](mailto:2673679261@qq.com) and sign the relevant open-source declaration.**
+
+
 > **Release status: Available.** Explore the live demo, download the MMIK-400K-IAC dataset, and access the MMAD, MMIK-400K ClosedQA, and MMIK-400K OpenQA model weights on Hugging Face.
 
 ## Online demo
